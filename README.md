@@ -1,5 +1,5 @@
 # Big-Integer
-Arbitrary precision integer experiment C++
+
 Class BigInt provides a simple, minimal implementation of an arbitrary precision integer type. This is rather a toy class used for experimental purposes. It doesn't hold a candle to professional libraries like GMP's or Python's neither in terms of capabilities nor of execution speed. 
 The four basic operators, addition, subtraction, multiplication, and division, are class members, the class itself being merely a wrapper for the std::vector<unsigned lonlg long int> type.
 
