@@ -1,0 +1,14 @@
+C++ = g++
+CFLAGS = -fopenmp -std=c++17  
+
+factorial: BigIntLib.o BigInt.o
+	${C++} ${CFLAGS} factorial.cpp -o factorial $^ 
+ 	
+BigInt.o: BigInt.h
+	${C++} ${CFLAGS} -c BigInt.cpp
+
+BigIntLib.o: BigIntLib.h
+	${C++} ${CFLAGS} -c BigIntLib.cpp
+	  
+clean:
+	rm -f *.o factorial

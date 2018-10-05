@@ -1,0 +1,14 @@
+C++ = g++
+CFLAGS = -fopenmp -std=c++17
+
+test_nchoosek: BigIntLib.o BigInt.o
+	${C++} ${CFLAGS} test_nchoosek.cpp -o test_nchoosek $^ 
+
+BigInt.o: BigInt.h
+	${C++} ${CFLAGS} -c BigInt.cpp
+
+BigIntLib.o: BigIntLib.h
+	${C++} ${CFLAGS} -c BigIntLib.cpp
+
+clean:
+	rm *.o test_nchoosek
