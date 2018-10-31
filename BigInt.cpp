@@ -1,7 +1,5 @@
-//#pragma once
 #include "BigInt.h"
 #include <fstream> // for printing to file
-//#include <algorithm>
 
 /* costructors*/
 BigInt::BigInt(long long int value)
@@ -93,7 +91,7 @@ void BigInt::read_str(const string & str)
 	auto q = sz / len;
 	auto r = sz % len;
 
-	for (auto k = 1; k <= q; k++)
+	for (auto k = 1; k <= q; ++k)
 	{
 		ullint x = stoi(str.substr(sz - k * len, len));
 		content.push_back(x);
@@ -122,7 +120,7 @@ vector<ullint> BigInt::add_vec(const vector<ullint>& a, const vector<ullint>& b)
 	}
 	else
 	{
-		for (auto k = 0; k < s2; k++)
+		for (auto k = 0; k < s2; ++k)
 		{
 			u[k] += v[k] += carry;
 
@@ -145,7 +143,7 @@ vector<ullint> BigInt::add_vec(const vector<ullint>& a, const vector<ullint>& b)
 				if (u[k] > base)
 				{
 					u[k] -= base;
-					k++;
+					++k;
 				}
 				else
 					carry = 0;
@@ -193,7 +191,7 @@ vector<ullint> BigInt::subt_vec(const vector<ullint>& a, const vector<ullint>& b
 			}
 		} // s1 > s2
 
-		for (auto k = 0; k < s2; k++)
+		for (auto k = 0; k < s2; ++k)
 		{
 			auto r = static_cast<int>(u[k] - v[k] - carry);
 			if (r >= 0)
@@ -220,7 +218,7 @@ vector<ullint> BigInt::subt_vec(const vector<ullint>& a, const vector<ullint>& b
 				uc += base;
 				//u[k] += base;
 				u[k] = static_cast<ullint>(uc);
-				k++;
+				++k;
 			}
 			else
 			{
@@ -240,7 +238,7 @@ void BigInt::mult(vector<ullint>& a, const ullint& rhs )
     ullint q=0;
     ullint r=0;
 		
-	for (auto i = a.begin(); i != a.end(); i++)
+	for (auto i = a.begin(); i != a.end(); ++i)
 	{
 		prod = *i * rhs + q;
 		*i = prod % base; 
@@ -294,7 +292,7 @@ bool infer(const vector<ullint>& u, const vector<ullint>& v)
 		if (u[N - s] > v[N - s])
 			return false;
 		else
-			s++;
+			++s;
 	}
 
 	if (s == N + 1)
@@ -592,7 +590,7 @@ BigInt& BigInt::operator *= (const BigInt& B)
 	
 	mult(content, v[0]);
 
-	for (size_t k = 1; k < n; k++)
+	for (size_t k = 1; k < n; ++k)
 	{
 		mult(p, v[k]);
 		push_zeros_top(p, k);
@@ -731,7 +729,7 @@ void BigInt::printB()
 
 	if (not for_print.empty())
 	{
-		for (auto k = 0; k != lbase - 1; k++)
+		for (auto k = 0; k != lbase - 1; ++k)
 			test.push_back(static_cast<ullint>(pow(10, lbase - 1 - k)));
 
 		if (sign == 1)
@@ -747,7 +745,7 @@ void BigInt::printB()
 			while (for_print[i] < test[k] && k < test.size())
 			{
 				cout << 0;
-				k++;
+				++k;
 			}
 
 			cout << for_print[i];
@@ -774,7 +772,7 @@ void BigInt::printB_tofile(const char* fname)
 
 	if (not for_print.empty())
 	{
-		for (auto k = 0; k != lbase - 1; k++)
+		for (auto k = 0; k != lbase - 1; ++k)
 			test.push_back(static_cast<ullint>(pow(10, lbase - 1 - k)));
 
 		if (sign == 1)
@@ -790,7 +788,7 @@ void BigInt::printB_tofile(const char* fname)
 			while (for_print[i] < test[k] && k < test.size())
 			{
 				fout << 0;
-				k++;
+				++k;
 			}
 
 			fout << for_print[i];
