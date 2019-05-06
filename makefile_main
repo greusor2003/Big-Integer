@@ -1,5 +1,5 @@
 C++ = g++
-CFLAGS = -fopenmp -std=c++17
+CFLAGS = -fopenmp -std=c++17 -O3
 
 main:  BigIntLib.o BigInt.o
 	${C++} ${CFLAGS} main.cpp -o main $^ 
