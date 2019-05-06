@@ -1,5 +1,5 @@
 C++ = g++
-CFLAGS = -fopenmp -std=c++17
+CFLAGS = -fopenmp -std=c++17 -O3
 
 test_nchoosek: BigIntLib.o BigInt.o
 	${C++} ${CFLAGS} test_nchoosek.cpp -o test_nchoosek $^ 
